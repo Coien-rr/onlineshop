@@ -2,7 +2,11 @@
 	import {
 		Goods,
 		Box
-	} from '@element-plus/icons'
+	} from '@element-plus/icons';
+	import { useRoute } from 'vue-router';
+	const route = useRoute();
+	// console.log(route.path);
+
 </script>
 
 <template>
@@ -10,7 +14,7 @@
     <el-header class="dashboardHeader">OnlineStorage</el-header>
       <el-container>
         <el-aside width="160px">
-					<el-menu default-active="/dashboard/goods" router>
+					<el-menu :default-active="route.path" router>
 						<el-menu-item index="/dashboard/goods">
           		<el-icon><goods /></el-icon>
           		<span>货物列表</span>

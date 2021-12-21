@@ -4,9 +4,11 @@ import 'element-plus/dist/index.css'
 import App from './App.vue'
 
 import router from './router/index'
+import { createPinia } from 'pinia'
 
 const app = createApp(App);
 app.use(ElementPlus);
 app.use(router);
 app.mount('#app');
+app.use(createPinia());
 // createApp(App).mount('#app')

@@ -1,7 +1,7 @@
-import { adminAxios } from "./http";
+import { onlineshopAxios } from "./http";
 
 export function adminLogin(){
-  return adminAxios({
+  return onlineshopAxios({
     url: '/hello',
     method: 'GET',
   })

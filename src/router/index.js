@@ -17,11 +17,11 @@ const routes = [
     children: [
       {
         path: 'goods',
-        component: import('../components/Dashboard/GoodList.vue') ,
+        component: () => import('../components/Dashboard/GoodList.vue') ,
       },
       {
         path: 'orders',
-        component: import('../components/Dashboard/OrderList.vue'),
+        component: () => import('../components/Dashboard/OrderList.vue'),
       },
     ],
   }
