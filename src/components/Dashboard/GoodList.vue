@@ -11,16 +11,16 @@
 	const goodIndex = ref(0);
 	const editgooditem = reactive({
 		goodId: '',
-		goodName: '',
-		goodPrice: 0,
-		goodStock: 0,
+		name: '',
+		price: 0,
+		inventory: 0,
 	});
 	// let editgooditem;
 	function editGood(index){
 		editgooditem.goodId = goodList.goods[index].goodId;
-		editgooditem.goodName = goodList.goods[index].goodName;
-		editgooditem.goodPrice = goodList.goods[index].goodPrice;
-		editgooditem.goodStock = goodList.goods[index].goodStock;
+		editgooditem.name = goodList.goods[index].name;
+		editgooditem.price = goodList.goods[index].price;
+		editgooditem.inventory = goodList.goods[index].inventory;
 		goodIndex.value = index;
 		dialogVisible.value = true;
 		console.log(editgooditem);
@@ -29,8 +29,8 @@
 	function editConfirm(){
 		dialogVisible.value = false;
 		const index = goodIndex.value;
-		goodList.goods[index].goodPrice = editgooditem.goodPrice;
-		goodList.goods[index].goodStock = editgooditem.goodStock;
+		goodList.goods[index].price = editgooditem.price;
+		goodList.goods[index].inventory = editgooditem.inventory;
 		console.log(goodList.goods[index]);
 		goodList.edit(editgooditem);
 	}
@@ -40,37 +40,36 @@
 <template>
 
 	<el-container class="listContainer">
-    <el-header class="listTitle">库存信息</el-header>
-    <el-main class="listMain">
-			<el-table :data="goodList.goods" border style="width: 100%">
+    	<el-header class="listTitle">库存信息</el-header>
+    	<el-main class="listMain">
+			<el-table :data="goodList.goods" style="width: 100%">
 				<el-table-column prop="goodId" label="商品编号"  width="180" />
-				<el-table-column prop="goodName" label="商品名称" width="280" />
-				<el-table-column prop="goodPrice" label="商品单价" />
-				<el-table-column prop="goodStock" label="商品库存" />
+				<el-table-column prop="name" label="商品名称" width="280" />
+				<el-table-column prop="price" label="商品单价" />
+				<el-table-column prop="inventory" label="商品库存" />
 				<el-table-column label="Operations" width="200">
-      		<template #default="scope">
-        		<el-button size="mini">Detail</el-button>
-        		<el-button size="mini" type="primary" :icon="Edit" @click="editGood(scope.$index)">Edit</el-button>
-      		</template>
-    		</el-table-column>
+					<template #default="scope">
+						<el-button size="mini">Detail</el-button>
+						<el-button size="mini" type="primary" :icon="Edit" @click="editGood(scope.$index)">Edit</el-button>
+					</template>
+				</el-table-column>
 			</el-table>
 		</el-main>
 	</el-container>
 
 	<el-dialog v-model="dialogVisible" title="修改商品" width="30%">
-    <!-- <span>This is a message</span> -->
 		<el-form v-model="editgooditem">
 			<el-form-item label="商品编号">
       	<el-input disabled v-model="editgooditem.goodId"></el-input>
     	</el-form-item>
 			<el-form-item label="商品名称">
-      	<el-input disabled v-model="editgooditem.goodName"></el-input>
+      	<el-input disabled v-model="editgooditem.name"></el-input>
     	</el-form-item>
 			<el-form-item label="商品价格">
-      	<el-input :prefix-icon="Coin" v-model="editgooditem.goodPrice"></el-input>
+      	<el-input :prefix-icon="Coin" v-model="editgooditem.price"></el-input>
     	</el-form-item>
 			<el-form-item label="商品库存">
-      	<el-input :prefix-icon="Shop" v-model="editgooditem.goodStock"></el-input>
+      	<el-input :prefix-icon="Shop" v-model="editgooditem.inventory"></el-input>
     	</el-form-item>
 		</el-form>
     <template #footer>

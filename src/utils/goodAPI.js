@@ -1,15 +1,16 @@
-import { onlineshopAxios } from "./http";
+// import { onlineshopAxios } from "./http";
+import { onlineshopAxiosDemo } from "./http";
 
 export function getGoodList(){
-  return onlineshopAxios({
-    url: 'getGoodList',
-    method: 'GET'
+  return onlineshopAxiosDemo({
+    url: '/good/list',
+    method: 'POST'
   })
 }
 
 export function editGood(gooditem){
-  return onlineshopAxios({
-    url: 'editGood',
+  return onlineshopAxiosDemo({
+    url: '/good',
     method: 'POST',
     data: gooditem
   })
