@@ -23,7 +23,7 @@
   <el-dialog
     v-model="props.dialogVisible"
     title="订单详情"
-    width="30%"
+    width="45%"
     :before-close="handleClose"
   >
     <el-table :data="props.billList" stripe style="width: 100%">

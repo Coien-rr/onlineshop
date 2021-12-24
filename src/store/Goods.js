@@ -9,12 +9,12 @@ import { editGood, getGoodList } from "../utils/goodAPI";
 //   },
 export const useGoodStore = defineStore('goods', {
 	state: () => ({
-		/** @type {{ goodId: string, goodName: string, goodPrice: number, goodStock: number }[]} */
+		/** @type {{ goodId: Number, name: string, price: number, inventory: number, count: Number }[]} */
 		goods: [],
 	}),
 
 	getters: {
-		
+
 	},
 
 	actions: {
@@ -25,7 +25,9 @@ export const useGoodStore = defineStore('goods', {
 					this.goods = [];
 					const list = res.data.data;
 					for(let i = 0; i < list.length; ++i){
-						this.goods.push(list[i]);
+						let item = list[i];
+						item.count = 0;
+						this.goods.push(item);
 					}
 				});
 		},
@@ -33,6 +35,10 @@ export const useGoodStore = defineStore('goods', {
 			console.log(gooditem);
 			editGood(gooditem)
 				.then(res => console.log(res))
+		},
+
+		purchase(){
+			
 		}
 	}
 })

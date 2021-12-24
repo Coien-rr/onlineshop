@@ -23,6 +23,10 @@ const routes = [
         path: 'orders',
         component: () => import('../components/Dashboard/OrderList.vue'),
       },
+      {
+        path: 'purchase',
+        component: () => import('../components/Dashboard/OrderPage.vue'),
+      }
     ],
   }
 ];

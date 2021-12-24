@@ -42,7 +42,7 @@
 	<el-container class="listContainer">
     	<el-header class="listTitle">库存信息</el-header>
     	<el-main class="listMain">
-			<el-table :data="goodList.goods" style="width: 100%">
+			<el-table :data="goodList.goods" height="600"  style="width: 100%">
 				<el-table-column prop="goodId" label="商品编号"  width="180" />
 				<el-table-column prop="name" label="商品名称" width="280" />
 				<el-table-column prop="price" label="商品单价" />
